@@ -16,11 +16,17 @@
     <!-- 載入 Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Tailwind 自訂設定 -->
+    <!-- Tailwind 自訂設定：注入 OKC 經典球衣色系 -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    colors: {
+                        okcNavy: '#0B1E3F',       /* 球衣經典底色：極致深藍 */
+                        okcOrange: '#EF3B24',     /* 球衣主色：活力烈焰橙 */
+                        okcYellow: '#FFB80C',     /* 球衣飾邊：亮眼璀璨黃 */
+                        okcSkyBlue: '#007AC1',    /* 雷霆隊徽：天空藍 */
+                    },
                     fontFamily: {
                         sans: ['"Noto Sans TC"', 'sans-serif'],
                         impact: ['"Impact"', '"Arial Black"', '"Noto Sans TC"', 'sans-serif'],
@@ -30,98 +36,100 @@
         }
     </script>
     <style>
-        /* 自訂樣式與動畫 */
         body { font-family: 'Noto Sans TC', sans-serif; }
         .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* 隱藏捲軸但可滾動 */
+        /* 自訂滾動條：適配白底風格 */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #EF3B24; }
     </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-200 pb-12 selection:bg-amber-500 selection:text-slate-900">
+<body class="min-h-screen bg-slate-50 text-slate-800 pb-12 selection:bg-okcOrange selection:text-white">
 
-    <!-- 酷炫頭部橫幅 -->
-    <header class="relative pt-20 pb-24 px-4 text-center overflow-hidden border-b border-white/10">
-        <!-- 背景發光裝飾 -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full pointer-events-none">
-            <div class="absolute top-[-20%] left-[-10%] w-64 md:w-96 h-64 md:h-96 bg-amber-500/20 rounded-full blur-[80px] md:blur-[100px]"></div>
-            <div class="absolute bottom-[-20%] right-[-10%] w-64 md:w-96 h-64 md:h-96 bg-indigo-600/20 rounded-full blur-[80px] md:blur-[100px]"></div>
+    <!-- 頂部：極致深藍底色橫幅 (OKC Navy) -->
+    <header class="relative pt-16 pb-24 px-4 text-center overflow-hidden bg-okcNavy border-b-8 border-okcOrange">
+        <!-- 柔和的橙色與黃色霓虹光暈 -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full pointer-events-none opacity-20">
+            <div class="absolute top-[-20%] left-[-10%] w-64 md:w-96 h-64 md:h-96 bg-okcOrange rounded-full blur-[80px]"></div>
+            <div class="absolute bottom-[-20%] right-[-10%] w-64 md:w-96 h-64 md:h-96 bg-okcYellow rounded-full blur-[80px]"></div>
         </div>
         
         <div class="max-w-4xl mx-auto relative z-10">
-            <div class="inline-flex items-center justify-center p-2 px-4 bg-slate-800/50 rounded-full mb-6 backdrop-blur-md border border-slate-700 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
-                <i data-lucide="flame" class="w-5 h-5 mr-2 text-amber-500 animate-pulse"></i>
-                <span class="font-bold tracking-widest text-amber-400 text-xs md:text-sm uppercase">2026 臨床教學升級計畫・首發招募</span>
+            <!-- 2026計畫徽章：深色背景下的發光徽章 -->
+            <div class="inline-flex items-center justify-center p-2 px-5 bg-white/10 rounded-full mb-6 border border-white/20 shadow-[0_4px_12px_rgba(239,59,36,0.15)]">
+                <i data-lucide="flame" class="w-5 h-5 mr-2 text-okcOrange animate-pulse"></i>
+                <span class="font-bold tracking-widest text-okcYellow text-xs md:text-sm uppercase">2026 臨床教學升級計畫・首發招募</span>
             </div>
             
-            <!-- 野獸派 (Brutalism) 風格大標題 -->
+            <!-- 野獸派 (Brutalism) 大標題：耀眼橙色底塊搭配黃色陰影 -->
             <h1 class="mb-8 flex flex-col items-center justify-center gap-4 mt-2">
-                <span class="inline-block bg-amber-500 text-slate-950 px-6 md:px-8 py-2 transform -skew-x-6 text-5xl md:text-8xl font-impact font-black tracking-tighter shadow-[6px_6px_0px_rgba(255,255,255,0.15)] md:shadow-[8px_8px_0px_rgba(255,255,255,0.15)] border-4 border-amber-500">
+                <span class="inline-block bg-okcOrange text-white px-6 md:px-10 py-3 transform -skew-x-6 text-5xl md:text-8xl font-impact font-black tracking-tighter shadow-[6px_6px_0px_#FFB80C] md:shadow-[8px_8px_0px_#FFB80C] border-2 border-okcOrange">
                     教案英雄帖
                 </span>
-                <span class="text-xl md:text-3xl text-white mt-4 block font-bold tracking-widest px-4">
+                <span class="text-2xl md:text-4xl text-white mt-6 block font-black tracking-widest px-4">
                     您的臨床實戰經驗，是無可取代的珍寶
                 </span>
             </h1>
             
-            <p class="text-base md:text-xl font-medium text-slate-400 max-w-2xl mx-auto px-4">
+            <p class="text-base md:text-xl font-medium text-slate-300 max-w-2xl mx-auto px-4 leading-relaxed">
                 教案的核心在於您獨特的臨床見解。我們歡迎您搭配 AI 工具輔助排版與潤飾，將日常診療智慧，輕鬆轉化為培育下一代的優質教材。
             </p>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-4 -mt-10 relative z-20">
+    <!-- 下半部：清爽白底版面 -->
+    <main class="max-w-5xl mx-auto px-4 -mt-12 relative z-20">
         
-        <!-- 懸賞雙卡 (Bounty Cards) -->
+        <!-- 懸賞雙卡 (Bounty Cards) - 已改為白底樣式，維持高質感對比 -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <!-- 撰寫卡片 - 金級懸賞 -->
-            <div class="bg-slate-900/80 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.1)] transform transition hover:-translate-y-2 duration-300 hover:shadow-[0_0_40px_rgba(245,158,11,0.2)] relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl group-hover:bg-amber-500/20 transition duration-500"></div>
+            
+            <!-- 撰寫卡片 - 金級懸賞 (白底 + 橘框) -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-okcOrange shadow-[0_10px_30px_rgba(239,59,36,0.08)] transform transition hover:-translate-y-2 duration-300 hover:shadow-[0_20px_40px_rgba(239,59,36,0.15)] relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-okcOrange/5 rounded-full blur-3xl group-hover:bg-okcOrange/10 transition duration-500"></div>
                 <div class="flex items-start justify-between">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold mb-4 border border-amber-500/20">
-                            <i data-lucide="zap" class="w-3 h-3"></i> 金級任務
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-okcOrange/10 text-okcOrange text-xs font-black mb-4 border border-okcOrange/20">
+                            <i data-lucide="zap" class="w-3.5 h-3.5 animate-bounce"></i> 金級任務
                         </div>
-                        <h2 class="text-xl md:text-2xl font-bold text-white mb-2">全新撰寫教案</h2>
-                        <p class="text-slate-400 text-xs md:text-sm">設計全新情境，或參考國考題型進行大幅擴充改寫</p>
+                        <h2 class="text-xl md:text-3xl font-black text-okcNavy mb-2 tracking-wide">全新撰寫教案</h2>
+                        <p class="text-slate-500 text-xs md:text-sm">設計全新情境，或參考國考題型進行大幅擴充改寫</p>
                     </div>
-                    <div class="bg-gradient-to-br from-amber-400 to-orange-600 w-12 h-12 flex-shrink-0 rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 group-hover:rotate-12 transition duration-300">
-                        <i data-lucide="gift" class="text-slate-900 w-6 h-6"></i>
+                    <div class="bg-gradient-to-br from-okcOrange to-red-600 w-12 h-12 flex-shrink-0 rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 group-hover:rotate-12 transition duration-300 border border-okcYellow/40">
+                        <i data-lucide="gift" class="text-white w-6 h-6"></i>
                     </div>
                 </div>
-                <div class="mt-8 pt-6 border-t border-slate-700/50">
-                    <p class="text-slate-500 text-sm mb-1">單案稿酬回饋</p>
-                    <div class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-500 flex items-baseline gap-1">
-                        <span class="text-xl md:text-2xl text-amber-500 font-bold">NT$</span> 3,000
+                <div class="mt-8 pt-6 border-t border-slate-100">
+                    <p class="text-slate-400 text-sm mb-1 font-bold">單案稿酬回饋</p>
+                    <div class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-okcOrange to-red-600 flex items-baseline gap-1">
+                        <span class="text-xl md:text-2xl text-okcOrange font-black">NT$</span> 3,000
                     </div>
                 </div>
             </div>
 
-            <!-- 修改卡片 - 銀級懸賞 -->
-            <div class="bg-slate-900/80 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.1)] transform transition hover:-translate-y-2 duration-300 hover:shadow-[0_0_40px_rgba(6,182,212,0.2)] relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition duration-500"></div>
+            <!-- 修改卡片 - 銀級懸賞 (白底 + 黃框) -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-okcYellow shadow-[0_10px_30px_rgba(255,184,12,0.08)] transform transition hover:-translate-y-2 duration-300 hover:shadow-[0_20px_40px_rgba(255,184,12,0.15)] relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-okcYellow/5 rounded-full blur-3xl group-hover:bg-okcYellow/10 transition duration-500"></div>
                 <div class="flex items-start justify-between">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold mb-4 border border-cyan-500/20">
-                            <i data-lucide="shield-check" class="w-3 h-3"></i> 銀級任務
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-okcYellow/10 text-amber-600 text-xs font-black mb-4 border border-okcYellow/20">
+                            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 銀級任務
                         </div>
-                        <h2 class="text-xl md:text-2xl font-bold text-white mb-2">既有教案翻修</h2>
-                        <p class="text-slate-400 text-xs md:text-sm">從本院既有教案庫中挑選老教案，進行現代化微調更新</p>
+                        <h2 class="text-xl md:text-3xl font-black text-okcNavy mb-2 tracking-wide">既有教案翻修</h2>
+                        <p class="text-slate-500 text-xs md:text-sm">從本院既有教案庫中挑選老教案，進行現代化微調更新</p>
                     </div>
-                    <div class="bg-gradient-to-br from-cyan-400 to-blue-600 w-12 h-12 flex-shrink-0 rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 group-hover:rotate-12 transition duration-300">
-                        <i data-lucide="book-open" class="text-slate-900 w-6 h-6"></i>
+                    <div class="bg-gradient-to-br from-okcYellow to-orange-500 w-12 h-12 flex-shrink-0 rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 group-hover:rotate-12 transition duration-300 border border-white/40">
+                        <i data-lucide="book-open" class="text-white w-6 h-6"></i>
                     </div>
                 </div>
-                <div class="mt-8 pt-6 border-t border-slate-700/50">
-                    <p class="text-slate-500 text-sm mb-1">單案修改稿酬</p>
-                    <div class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 flex items-baseline gap-1">
-                        <span class="text-xl md:text-2xl text-cyan-500 font-bold">NT$</span> 1,000
+                <div class="mt-8 pt-6 border-t border-slate-100">
+                    <p class="text-slate-400 text-sm mb-1 font-bold">單案修改稿酬</p>
+                    <div class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-okcYellow to-amber-600 flex items-baseline gap-1">
+                        <span class="text-xl md:text-2xl text-amber-600 font-black">NT$</span> 1,000
                     </div>
                 </div>
             </div>
@@ -130,60 +138,61 @@
         <!-- 任務情報區 -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
             
-            <!-- 任務規格與題型 (佔 2 欄) -->
-            <div class="lg:col-span-2 bg-slate-800/40 rounded-3xl p-6 md:p-8 border border-slate-700/50 relative overflow-hidden flex flex-col justify-center">
+            <!-- 任務規格與題型 (佔 2 欄) - 白色質感卡片 -->
+            <div class="lg:col-span-2 bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm relative overflow-hidden flex flex-col justify-center">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-                    <h3 class="text-xl md:text-2xl font-black flex items-center gap-2 text-white">
-                        <i data-lucide="file-text" class="w-6 h-6 text-amber-400"></i>
+                    <h3 class="text-xl md:text-2xl font-black flex items-center gap-2 text-okcNavy">
+                        <i data-lucide="file-text" class="w-6 h-6 text-okcOrange"></i>
                         教案情報 ＆ 任務規格
                     </h3>
-                    <!-- 規格標籤 -->
                     <div class="flex flex-wrap gap-2">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-500/20 text-indigo-300 text-xs md:text-sm font-bold rounded-lg border border-indigo-500/30">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-okcSkyBlue/10 text-okcSkyBlue text-xs md:text-sm font-bold rounded-lg border border-okcSkyBlue/20">
                             <i data-lucide="users" class="w-4 h-4"></i> 對象：實習醫學生 (UGY)
                         </span>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-rose-500/20 text-rose-300 text-xs md:text-sm font-bold rounded-lg border border-rose-500/30">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-okcOrange/10 text-okcOrange text-xs md:text-sm font-bold rounded-lg border border-okcOrange/20">
                             <i data-lucide="timer" class="w-4 h-4"></i> 測驗長度：8 分鐘 / 站
                         </span>
                     </div>
                 </div>
                 
-                <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-                    只要您擁有豐富的臨床經驗，就能將日常工作轉化為絕佳的測驗情境！本次徵求涵蓋：<span class="text-amber-400 font-bold">病史詢問、身體檢查、病情解釋及臨床處置、醫病溝通與衛教、技能操作</span> 等 5 大類 OSCE 題型。<br><br>
-                    <i data-lucide="arrow-down-circle" class="inline w-4 h-4 mr-1 text-amber-500"></i> 請於下方表單直接勾選您最想挑戰的拿手領域！
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                    只要您擁有豐富的臨床經驗，就能將日常工作轉化為絕佳的測驗情境！本次徵求涵蓋：<span class="text-okcNavy font-black">病史詢問、身體檢查、病情解釋及臨床處置、醫病溝通與衛教、技能操作</span> 等 5 大類 OSCE 題型。<br><br>
+                    <span class="text-okcOrange font-bold inline-flex items-center gap-1">
+                        <i data-lucide="arrow-down-circle" class="w-4 h-4"></i> 請於下方表單直接勾選您最想挑戰的拿手領域！
+                    </span>
                 </p>
             </div>
 
-            <!-- 國考題庫解鎖預告 (佔 1 欄) -->
-            <div class="lg:col-span-1 bg-gradient-to-br from-indigo-900/50 to-purple-900/50 rounded-3xl p-6 md:p-8 border border-indigo-500/30 relative overflow-hidden flex flex-col justify-center">
-                <div class="absolute -right-4 -bottom-4 opacity-10">
-                    <i data-lucide="lock" class="w-32 h-32 text-indigo-300"></i>
+            <!-- 國考題庫解鎖預告 (佔 1 欄) - 保持深藍背景形成強烈對比 -->
+            <div class="lg:col-span-1 bg-gradient-to-br from-okcNavy to-[#040C1A] rounded-3xl p-6 md:p-8 border border-okcSkyBlue/40 shadow-md relative overflow-hidden flex flex-col justify-center">
+                <div class="absolute -right-4 -bottom-4 opacity-5">
+                    <i data-lucide="lock" class="w-32 h-32 text-okcSkyBlue"></i>
                 </div>
-                <h3 class="text-base md:text-xl font-bold mb-4 flex items-center gap-2 text-indigo-300 relative z-10">
+                <h3 class="text-base md:text-xl font-black mb-4 flex items-center gap-2 text-okcYellow relative z-10">
                     <i data-lucide="unlock" class="w-5 h-5"></i>
                     專屬特權：國考題庫優先挑
                 </h3>
                 <div class="relative z-10">
                     <p class="text-white font-bold text-lg mb-2">不想從零開始發想？</p>
                     <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                        國考甫落幕，我們已為您準備好最新的「<span class="text-indigo-200 font-bold border-b border-indigo-400">5月國考題庫藍圖</span>」。<br><br>
+                        國考甫落幕，我們已為您準備好最新的「<span class="text-okcYellow font-bold border-b border-okcYellow/50">5月國考題庫藍圖</span>」。<br><br>
                         現在簽署意願，屆時將享有最優先的「挑題特權」。直接以現成的國考題為骨架，擴充改寫更省力！
                     </p>
-                    <div class="inline-flex items-center text-xs font-bold bg-indigo-500/20 text-indigo-300 px-4 py-2 rounded-lg border border-indigo-500/30 w-full justify-center shadow-inner">
-                        <i data-lucide="star" class="w-4 h-4 mr-1.5 text-amber-400"></i> 先佔先贏，卡位熱門題型
+                    <div class="inline-flex items-center text-xs font-bold bg-okcOrange/20 text-okcOrange px-4 py-2 rounded-lg border border-okcOrange/30 w-full justify-center shadow-inner">
+                        <i data-lucide="star" class="w-4 h-4 mr-1.5 text-okcYellow animate-pulse"></i> 先佔先贏，卡位熱門題型
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 酷炫意願表單容器 -->
-        <div class="bg-slate-800/60 backdrop-blur-xl rounded-3xl p-6 md:p-12 border border-slate-700/80 shadow-2xl relative">
+        <!-- 意願表單容器 -->
+        <div class="bg-white rounded-3xl p-6 md:p-12 border border-slate-200 shadow-xl relative">
             
-            <!-- 錯誤提示橫幅 (預設隱藏) -->
-            <div id="error-banner" class="hidden mb-6 p-4 bg-rose-500/20 border border-rose-500 text-rose-300 rounded-xl flex items-center gap-3 animate-fade-in">
-                <i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0"></i>
+            <!-- 錯誤提示橫幅 -->
+            <div id="error-banner" class="hidden mb-6 p-4 bg-red-50 border border-okcOrange text-okcOrange rounded-xl flex items-center gap-3 animate-fade-in">
+                <i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0 text-okcOrange"></i>
                 <div class="text-sm font-bold flex-1" id="error-message">資料傳送失敗，請稍後再試。</div>
-                <button type="button" onclick="hideError()" class="text-rose-400 hover:text-white transition">
+                <button type="button" onclick="hideError()" class="text-slate-400 hover:text-slate-600 transition">
                     <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
             </div>
@@ -191,8 +200,8 @@
             <!-- 表單區塊 -->
             <div id="form-section">
                 <div class="text-center mb-8 md:mb-10">
-                    <h2 class="text-2xl md:text-3xl font-black text-white mb-3">簽署英雄榜，搶先卡位</h2>
-                    <p class="text-slate-400 text-sm md:text-base">只需 1 分鐘，預約您的專屬任務權限與索取寫作輔助。</p>
+                    <h2 class="text-2xl md:text-4xl font-black text-okcNavy mb-3">簽署英雄榜，搶先卡位</h2>
+                    <p class="text-slate-500 text-sm md:text-base font-medium">只需 1 分鐘，預約您的專屬任務權限與索取寫作輔助。</p>
                 </div>
 
                 <form id="hero-form" class="space-y-6 max-w-3xl mx-auto">
@@ -200,15 +209,15 @@
                     <!-- 身份與姓名 -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-bold text-slate-300 mb-2 flex items-center gap-1">
-                                <i data-lucide="user-circle" class="w-4 h-4 text-amber-500"></i> 您的尊稱
+                            <label class="block text-sm font-bold text-slate-700 mb-2 flex items-center gap-1">
+                                <i data-lucide="user-circle" class="w-4 h-4 text-okcOrange"></i> 您的尊稱
                             </label>
-                            <input type="text" id="name" required class="w-full px-4 py-3 bg-slate-900/50 rounded-xl border border-slate-600 text-white placeholder-slate-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition outline-none" placeholder="請輸入您的姓名">
+                            <input type="text" id="name" required class="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-okcOrange focus:border-okcOrange transition outline-none" placeholder="請輸入您的姓名">
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-slate-300 mb-2">您的主要身份</label>
-                            <select id="role" required class="w-full px-4 py-3 bg-slate-900/50 rounded-xl border border-slate-600 text-white placeholder-slate-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition outline-none appearance-none">
-                                <option value="" disabled selected class="text-slate-500">請選擇您的身份...</option>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">您的主要身份</label>
+                            <select id="role" required class="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-okcOrange focus:border-okcOrange transition outline-none appearance-none">
+                                <option value="" disabled selected class="text-slate-400">請選擇您的身份...</option>
                                 <option value="OSCE考官">OSCE考官</option>
                                 <option value="臨床教師">臨床教師</option>
                                 <option value="其他專業人員">其他專業人員</option>
@@ -218,31 +227,31 @@
 
                     <!-- 聯絡信箱 -->
                     <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-2">聯絡信箱 (Email)</label>
-                        <input type="email" id="email" required class="w-full px-4 py-3 bg-slate-900/50 rounded-xl border border-slate-600 text-white placeholder-slate-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition outline-none" placeholder="example@hospital.com">
+                        <label class="block text-sm font-bold text-slate-700 mb-2">聯絡信箱 (Email)</label>
+                        <input type="email" id="email" required class="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-okcOrange focus:border-okcOrange transition outline-none" placeholder="example@hospital.com">
                     </div>
 
                     <!-- 意願選項 (多選) 自訂 Checkbox -->
                     <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-3">您傾向接取哪一種懸賞任務？ (可多選，先登記不強制)</label>
+                        <label class="block text-sm font-bold text-slate-700 mb-3">您傾向接取哪一種懸賞任務？ (可多選，先登記不強制)</label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- 選項 1: 全新撰寫 -->
-                            <div id="btn-write" onclick="toggleCheckbox('write')" class="flex items-center p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 border-slate-700 bg-slate-900/50 hover:border-slate-500 select-none">
+                            <!-- 選項 1: 全新撰寫 (OKC橘) -->
+                            <div id="btn-write" onclick="toggleCheckbox('write')" class="flex items-center p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 border-slate-200 bg-slate-50 hover:border-okcOrange select-none">
                                 <input type="checkbox" id="check-write" class="hidden" value="全新撰寫">
-                                <div id="icon-bg-write" class="w-5 h-5 flex-shrink-0 rounded flex items-center justify-center mr-3 transition-colors bg-slate-800 border border-slate-600">
-                                    <i data-lucide="check-circle" id="icon-check-write" class="w-4 h-4 text-slate-900 hidden"></i>
+                                <div id="icon-bg-write" class="w-5 h-5 flex-shrink-0 rounded flex items-center justify-center mr-3 transition-colors bg-white border border-slate-300">
+                                    <i data-lucide="check-circle" id="icon-check-write" class="w-4 h-4 text-white hidden"></i>
                                 </div>
-                                <span id="text-write" class="font-bold text-slate-300 text-sm md:text-base">
+                                <span id="text-write" class="font-bold text-slate-600 text-sm md:text-base">
                                     撰寫：全新情境 / 國考題改寫
                                 </span>
                             </div>
-                            <!-- 選項 2: 既有修改 -->
-                            <div id="btn-edit" onclick="toggleCheckbox('edit')" class="flex items-center p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 border-slate-700 bg-slate-900/50 hover:border-slate-500 select-none">
+                            <!-- 選項 2: 既有修改 (OKC黃 - 在白底改用深橙黃確保可讀性) -->
+                            <div id="btn-edit" onclick="toggleCheckbox('edit')" class="flex items-center p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 border-slate-200 bg-slate-50 hover:border-okcYellow select-none">
                                 <input type="checkbox" id="check-edit" class="hidden" value="既有修改">
-                                <div id="icon-bg-edit" class="w-5 h-5 flex-shrink-0 rounded flex items-center justify-center mr-3 transition-colors bg-slate-800 border border-slate-600">
-                                    <i data-lucide="check-circle" id="icon-check-edit" class="w-4 h-4 text-slate-900 hidden"></i>
+                                <div id="icon-bg-edit" class="w-5 h-5 flex-shrink-0 rounded flex items-center justify-center mr-3 transition-colors bg-white border border-slate-300">
+                                    <i data-lucide="check-circle" id="icon-check-edit" class="w-4 h-4 text-white hidden"></i>
                                 </div>
-                                <span id="text-edit" class="font-bold text-slate-300 text-sm md:text-base">
+                                <span id="text-edit" class="font-bold text-slate-600 text-sm md:text-base">
                                     修改：教案庫老題翻修
                                 </span>
                             </div>
@@ -251,46 +260,46 @@
 
                     <!-- 題型選擇 -->
                     <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-3">您最擅長或想挑戰的題型是？ (可多選)</label>
+                        <label class="block text-sm font-bold text-slate-700 mb-3">您最擅長或想挑戰的題型是？ (可多選)</label>
                         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
                             <!-- 題型 1 -->
                             <label class="cursor-pointer relative">
                                 <input type="checkbox" name="exam-type" class="peer sr-only" value="病史詢問">
-                                <div class="h-full p-3 rounded-xl border border-slate-700 bg-slate-900/50 hover:border-slate-500 peer-checked:border-amber-500 peer-checked:bg-amber-500/10 peer-checked:shadow-[0_0_10px_rgba(245,158,11,0.2)] peer-checked:[&_svg]:text-amber-500 peer-checked:[&_span]:text-amber-400 transition-all flex flex-col items-center justify-center text-center">
-                                    <i data-lucide="clipboard-list" class="w-6 h-6 text-slate-500 mb-2 transition-colors"></i>
-                                    <span class="font-bold text-slate-400 text-sm transition-colors">病史詢問</span>
+                                <div class="h-full p-4 rounded-xl border border-slate-200 bg-slate-50 hover:border-okcOrange peer-checked:border-okcOrange peer-checked:bg-okcOrange/5 peer-checked:shadow-[0_0_12px_rgba(239,59,36,0.15)] peer-checked:[&_svg]:text-okcOrange peer-checked:[&_span]:text-okcOrange transition-all flex flex-col items-center justify-center text-center">
+                                    <i data-lucide="clipboard-list" class="w-6 h-6 text-slate-400 mb-2 transition-colors"></i>
+                                    <span class="font-bold text-slate-500 text-sm transition-colors">病史詢問</span>
                                 </div>
                             </label>
                             <!-- 題型 2 -->
                             <label class="cursor-pointer relative">
                                 <input type="checkbox" name="exam-type" class="peer sr-only" value="身體檢查">
-                                <div class="h-full p-3 rounded-xl border border-slate-700 bg-slate-900/50 hover:border-slate-500 peer-checked:border-blue-500 peer-checked:bg-blue-500/10 peer-checked:shadow-[0_0_10px_rgba(59,130,246,0.2)] peer-checked:[&_svg]:text-blue-500 peer-checked:[&_span]:text-blue-400 transition-all flex flex-col items-center justify-center text-center">
-                                    <i data-lucide="activity" class="w-6 h-6 text-slate-500 mb-2 transition-colors"></i>
-                                    <span class="font-bold text-slate-400 text-sm transition-colors">身體檢查</span>
+                                <div class="h-full p-4 rounded-xl border border-slate-200 bg-slate-50 hover:border-okcYellow peer-checked:border-okcYellow peer-checked:bg-okcYellow/5 peer-checked:shadow-[0_0_12px_rgba(255,184,12,0.15)] peer-checked:[&_svg]:text-okcYellow peer-checked:[&_span]:text-amber-600 transition-all flex flex-col items-center justify-center text-center">
+                                    <i data-lucide="activity" class="w-6 h-6 text-slate-400 mb-2 transition-colors"></i>
+                                    <span class="font-bold text-slate-500 text-sm transition-colors">身體檢查</span>
                                 </div>
                             </label>
                             <!-- 題型 3 -->
                             <label class="cursor-pointer relative">
                                 <input type="checkbox" name="exam-type" class="peer sr-only" value="病情解釋及臨床處置">
-                                <div class="h-full p-3 rounded-xl border border-slate-700 bg-slate-900/50 hover:border-slate-500 peer-checked:border-emerald-500 peer-checked:bg-emerald-500/10 peer-checked:shadow-[0_0_10px_rgba(16,185,129,0.2)] peer-checked:[&_svg]:text-emerald-500 peer-checked:[&_span]:text-emerald-400 transition-all flex flex-col items-center justify-center text-center">
-                                    <i data-lucide="stethoscope" class="w-6 h-6 text-slate-500 mb-2 transition-colors"></i>
-                                    <span class="font-bold text-slate-400 text-xs md:text-sm transition-colors leading-tight">病情解釋<br>& 臨床處置</span>
+                                <div class="h-full p-4 rounded-xl border border-slate-200 bg-slate-50 hover:border-okcSkyBlue peer-checked:border-okcSkyBlue peer-checked:bg-okcSkyBlue/5 peer-checked:shadow-[0_0_12px_rgba(0,122,193,0.15)] peer-checked:[&_svg]:text-okcSkyBlue peer-checked:[&_span]:text-okcSkyBlue transition-all flex flex-col items-center justify-center text-center">
+                                    <i data-lucide="stethoscope" class="w-6 h-6 text-slate-400 mb-2 transition-colors"></i>
+                                    <span class="font-bold text-slate-500 text-xs md:text-sm transition-colors leading-tight">病情解釋<br>& 臨床處置</span>
                                 </div>
                             </label>
                             <!-- 題型 4 -->
                             <label class="cursor-pointer relative">
                                 <input type="checkbox" name="exam-type" class="peer sr-only" value="醫病溝通與衛教">
-                                <div class="h-full p-3 rounded-xl border border-slate-700 bg-slate-900/50 hover:border-slate-500 peer-checked:border-purple-500 peer-checked:bg-purple-500/10 peer-checked:shadow-[0_0_10px_rgba(168,85,247,0.2)] peer-checked:[&_svg]:text-purple-500 peer-checked:[&_span]:text-purple-400 transition-all flex flex-col items-center justify-center text-center">
-                                    <i data-lucide="message-square-heart" class="w-6 h-6 text-slate-500 mb-2 transition-colors"></i>
-                                    <span class="font-bold text-slate-400 text-xs md:text-sm transition-colors leading-tight">醫病溝通<br>& 衛教</span>
+                                <div class="h-full p-4 rounded-xl border border-slate-200 bg-slate-50 hover:border-indigo-400 peer-checked:border-indigo-500 peer-checked:bg-indigo-500/5 peer-checked:shadow-[0_0_12px_rgba(99,102,241,0.15)] peer-checked:[&_svg]:text-indigo-500 peer-checked:[&_span]:text-indigo-600 transition-all flex flex-col items-center justify-center text-center">
+                                    <i data-lucide="message-square-heart" class="w-6 h-6 text-slate-400 mb-2 transition-colors"></i>
+                                    <span class="font-bold text-slate-500 text-xs md:text-sm transition-colors leading-tight">醫病溝通<br>& 衛教</span>
                                 </div>
                             </label>
                             <!-- 題型 5 -->
                             <label class="cursor-pointer relative">
                                 <input type="checkbox" name="exam-type" class="peer sr-only" value="技能操作">
-                                <div class="h-full p-3 rounded-xl border border-slate-700 bg-slate-900/50 hover:border-slate-500 peer-checked:border-rose-500 peer-checked:bg-rose-500/10 peer-checked:shadow-[0_0_10px_rgba(243,64,121,0.2)] peer-checked:[&_svg]:text-rose-500 peer-checked:[&_span]:text-rose-400 transition-all flex flex-col items-center justify-center text-center">
-                                    <i data-lucide="syringe" class="w-6 h-6 text-slate-500 mb-2 transition-colors"></i>
-                                    <span class="font-bold text-slate-400 text-sm transition-colors">技能操作</span>
+                                <div class="h-full p-4 rounded-xl border border-slate-200 bg-slate-50 hover:border-rose-500 peer-checked:border-rose-500 peer-checked:bg-rose-500/5 peer-checked:shadow-[0_0_12px_rgba(244,63,94,0.15)] peer-checked:[&_svg]:text-rose-500 peer-checked:[&_span]:text-rose-500 transition-all flex flex-col items-center justify-center text-center">
+                                    <i data-lucide="syringe" class="w-6 h-6 text-slate-400 mb-2 transition-colors"></i>
+                                    <span class="font-bold text-slate-500 text-sm transition-colors">技能操作</span>
                                 </div>
                             </label>
                         </div>
@@ -298,24 +307,24 @@
 
                     <!-- 備註留言 -->
                     <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-2">專長領域或留言 (選填)</label>
-                        <textarea id="comments" rows="3" class="w-full px-4 py-3 bg-slate-900/50 rounded-xl border border-slate-600 text-white placeholder-slate-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition outline-none resize-none" placeholder="請輸入您的留言..."></textarea>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">專長領域或留言 (選填)</label>
+                        <textarea id="comments" rows="3" class="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-okcOrange focus:border-okcOrange transition outline-none resize-none" placeholder="請輸入您的留言..."></textarea>
                     </div>
 
                     <!-- 送出按鈕 -->
-                    <button type="submit" id="submit-btn" class="w-full py-4 mt-4 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 bg-[length:200%_auto] hover:bg-[position:right_center] text-slate-900 rounded-xl font-black text-lg shadow-[0_0_20px_rgba(245,158,11,0.4)] transform transition hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <button type="submit" id="submit-btn" class="w-full py-4 mt-4 bg-gradient-to-r from-okcOrange via-okcYellow to-okcOrange bg-[length:200%_auto] hover:bg-[position:right_center] text-white rounded-xl font-black text-xl shadow-[0_4px_20px_rgba(239,59,36,0.25)] transform transition hover:-translate-y-1 flex items-center justify-center gap-2 border-2 border-okcYellow/40">
                         <span id="btn-text" class="flex items-center gap-2">
                             <i data-lucide="rocket" class="w-6 h-6"></i>
                             確認響應，預約優先挑題特權！
                         </span>
                         <span id="btn-spinner" class="hidden">
-                            <svg class="animate-spin h-6 w-6 text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
                         </span>
                     </button>
-                    <p class="text-center text-xs text-slate-500 mt-4 px-4">
+                    <p class="text-center text-xs text-slate-400 mt-4 px-4 font-bold">
                         * 本表單僅為初步意願調查，正式題庫藍圖清單將於您送出後寄至信箱供您挑選。
                     </p>
                 </form>
@@ -323,14 +332,14 @@
 
             <!-- 成功送出畫面 -->
             <div id="success-section" class="hidden text-center py-10 md:py-16 animate-fade-in">
-                <div class="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 bg-emerald-500/20 rounded-full mb-6 border-2 border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
-                    <i data-lucide="check-circle" class="w-10 h-10 md:w-12 md:h-12 text-emerald-400"></i>
+                <div class="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 bg-emerald-500/10 rounded-full mb-6 border-2 border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+                    <i data-lucide="check-circle" class="w-10 h-10 md:w-12 md:h-12 text-emerald-500"></i>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-black text-white mb-4">英雄歸位！感謝您的熱血參與</h2>
-                <p class="text-base md:text-lg text-slate-400 mb-8 max-w-lg mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-black text-okcNavy mb-4">英雄歸位！感謝您的熱血參與</h2>
+                <p class="text-base md:text-lg text-slate-600 mb-8 max-w-lg mx-auto px-4 font-medium">
                     您的意願已成功登錄。我們將於近期內將「國考題庫藍圖」清單寄送至您的信箱，讓您搶先挑選最拿手的題型！
                 </p>
-                <button onclick="resetForm()" class="px-8 py-3 bg-slate-700 text-white rounded-full hover:bg-slate-600 transition font-bold shadow-lg">
+                <button onclick="resetForm()" class="px-8 py-3 bg-okcNavy text-white rounded-full hover:bg-okcOrange transition font-bold shadow-lg">
                     返回修改資料
                 </button>
             </div>
@@ -360,7 +369,7 @@
             banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // 處理自訂核取方塊的樣式切換
+        // 處理自訂核取方塊的樣式切換 (適配白底風格，提升選取對比)
         function toggleCheckbox(type) {
             const checkbox = document.getElementById(`check-${type}`);
             const btn = document.getElementById(`btn-${type}`);
@@ -373,39 +382,39 @@
 
             if (checkbox.checked) {
                 if (type === 'write') {
-                    // 全新撰寫 (Amber 色系)
-                    btn.classList.replace('border-slate-700', 'border-amber-500');
-                    btn.classList.replace('bg-slate-900/50', 'bg-amber-500/10');
-                    btn.classList.add('shadow-[0_0_15px_rgba(245,158,11,0.2)]');
-                    iconBg.classList.replace('bg-slate-800', 'bg-amber-500');
-                    iconBg.classList.replace('border-slate-600', 'border-amber-500');
-                    text.classList.replace('text-slate-300', 'text-amber-400');
+                    // 全新撰寫 (橙色系)
+                    btn.classList.replace('border-slate-200', 'border-okcOrange');
+                    btn.classList.replace('bg-slate-50', 'bg-okcOrange/10');
+                    btn.classList.add('shadow-[0_0_15px_rgba(239,59,36,0.15)]');
+                    iconBg.classList.replace('bg-white', 'bg-okcOrange');
+                    iconBg.classList.replace('border-slate-300', 'border-okcOrange');
+                    text.classList.replace('text-slate-600', 'text-okcOrange');
                 } else {
-                    // 既有修改 (Cyan 色系)
-                    btn.classList.replace('border-slate-700', 'border-cyan-500');
-                    btn.classList.replace('bg-slate-900/50', 'bg-cyan-500/10');
-                    btn.classList.add('shadow-[0_0_15px_rgba(6,182,212,0.2)]');
-                    iconBg.classList.replace('bg-slate-800', 'bg-cyan-500');
-                    iconBg.classList.replace('border-slate-600', 'border-cyan-500');
-                    text.classList.replace('text-slate-300', 'text-cyan-400');
+                    // 既有修改 (黃色系 -> 白底改為橙黃 Amber 色以增強對比)
+                    btn.classList.replace('border-slate-200', 'border-okcYellow');
+                    btn.classList.replace('bg-slate-50', 'bg-okcYellow/10');
+                    btn.classList.add('shadow-[0_0_15px_rgba(255,184,12,0.15)]');
+                    iconBg.classList.replace('bg-white', 'bg-okcYellow');
+                    iconBg.classList.replace('border-slate-300', 'border-okcYellow');
+                    text.classList.replace('text-slate-600', 'text-amber-600');
                 }
                 iconCheck.classList.remove('hidden');
             } else {
                 // 恢復未選取狀態
                 if (type === 'write') {
-                    btn.classList.replace('border-amber-500', 'border-slate-700');
-                    btn.classList.replace('bg-amber-500/10', 'bg-slate-900/50');
-                    btn.classList.remove('shadow-[0_0_15px_rgba(245,158,11,0.2)]');
-                    iconBg.classList.replace('bg-amber-500', 'bg-slate-800');
-                    iconBg.classList.replace('border-amber-500', 'border-slate-600');
-                    text.classList.replace('text-amber-400', 'text-slate-300');
+                    btn.classList.replace('border-okcOrange', 'border-slate-200');
+                    btn.classList.replace('bg-okcOrange/10', 'bg-slate-50');
+                    btn.classList.remove('shadow-[0_0_15px_rgba(239,59,36,0.15)]');
+                    iconBg.classList.replace('bg-okcOrange', 'bg-white');
+                    iconBg.classList.replace('border-okcOrange', 'border-slate-300');
+                    text.classList.replace('text-okcOrange', 'text-slate-600');
                 } else {
-                    btn.classList.replace('border-cyan-500', 'border-slate-700');
-                    btn.classList.replace('bg-cyan-500/10', 'bg-slate-900/50');
-                    btn.classList.remove('shadow-[0_0_15px_rgba(6,182,212,0.2)]');
-                    iconBg.classList.replace('bg-cyan-500', 'bg-slate-800');
-                    iconBg.classList.replace('border-cyan-500', 'border-slate-600');
-                    text.classList.replace('text-cyan-400', 'text-slate-300');
+                    btn.classList.replace('border-okcYellow', 'border-slate-200');
+                    btn.classList.replace('bg-okcYellow/10', 'bg-slate-50');
+                    btn.classList.remove('shadow-[0_0_15px_rgba(255,184,12,0.15)]');
+                    iconBg.classList.replace('bg-okcYellow', 'bg-white');
+                    iconBg.classList.replace('border-okcYellow', 'border-slate-300');
+                    text.classList.replace('text-amber-600', 'text-slate-600');
                 }
                 iconCheck.classList.add('hidden');
             }
